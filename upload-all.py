@@ -79,7 +79,7 @@ if __name__ == '__main__':
     print('You can get course and assignment IDs from the URL, e.g.')
     print('https://www.gradescope.com/courses/1234/assignments/5678')
     print('course_id = 1234, assignment_id = 5678')
-    print('')
+    print()
 
     course_id = input('Gradescope Course ID: ')
     assignment_id = input('Gradescope Assignment ID: ')
@@ -91,12 +91,12 @@ if __name__ == '__main__':
 
     if merge:
         for file in os.listdir('.'):
-            email = file[0:10].lower() + '@my.sliit.lk'
+            email = file[0:10].lower() + '@domain.com'
             client.upload_programming_submission(course_id, assignment_id, email, [file])
             print('uploaded ', file)
     else:
         for studentid in os.listdir(folder):
-            email = studentid.lower()+'@my.sliit.lk'
+            email = studentid.lower()+'@domain.com'
             files = []
             for file in os.listdir('.'):
                 filename = studentid + '/' + file
