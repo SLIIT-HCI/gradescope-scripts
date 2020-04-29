@@ -1,10 +1,4 @@
 #!/usr/bin/env python
-"""
-TODO:   Migrate code to python3
-TODO:   Work on a copy of the original submission folder
-TODO:   Replace subroutines with python libraries
-TODO:   Replace with functions passed as arugments - esp. for recursive methods
-"""
 
 import os
 import sys
