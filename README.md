@@ -8,7 +8,7 @@ These scripts are written to prepare student submissions as downloaded from Cour
 
 ### Prerequisites
 * Python  - [https://www.python.org/downloads/](https://www.python.org/downloads/)
-* Python requests library 
+* Python requests library
 
 		$ python -m pip install requests
 
@@ -21,7 +21,7 @@ These scripts are written to prepare student submissions as downloaded from Cour
 
 ### Running
 * Login to GradeScope, open your course, then assignment, and note the _course-id_ and _assignment-id_ by the browser URL displayed
-	> `gradescope.com/courses/<course-id>/assignment/<assignment-id>` 
+	> `gradescope.com/courses/<course-id>/assignment/<assignment-id>`
 
 * Run the script **clean-all.py** using the following command:
 
@@ -37,12 +37,12 @@ The `<student-id>.java` contains a merged version of all the source files belong
 * Upload the submissions to GradeScope using the script **upload-all.py** from within the `submissions` folder
 
 		$ cd submissions
-		$ python ../upload-all.py 
+		$ python ../upload-all.py
 
 ## Notes
 The merge feature could be turned off by:
 * setting `merge = False` in upload-all.py, and
-* commenting out the function call to `merge_files()` in clean-all.py 
+* commenting out the function call to `merge_files()` in clean-all.py
 
 This will result in multiple source files inside the student folder within `submissions`
  > `~/gs/submissions/<student-id>/[files]`
@@ -56,17 +56,16 @@ This will result in multiple source files inside the student folder within `subm
 
 ## Future Work
 The following items are in the development pipeline
-* Migrate all code to python3
 * Instead of modifying the existing submissions folder, work the changes on a deep copy
 * Replace calls to `subprocess` with suitable python libraries
 * Use inner functions where possible - e.g. for recursive operations
 * Generalising to a wider set of courses, assignments, and submissions
 	* configurable folder structures
 	* configurable filtering parameters for source code (e.g. **.c,** **.py,** etc.)
-* Support more zip file formats 
+* Support more zip file formats
 	* e.g. **.7z**, **.tar.gz**
 * Support more filetypes where source code might reside in
-	* e.g. **.docx**, **.pdf**, screenshots (using OCR), etc. 
+	* e.g. **.docx**, **.pdf**, screenshots (using OCR), etc.
 * Configurations via command line arguments to run parts of the code
 	* E.g. allow the user to run cleanup steps 1,2,5, skipping 3,4
 
