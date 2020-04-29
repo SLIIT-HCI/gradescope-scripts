@@ -202,13 +202,13 @@ def list_empty_entries():
 def main():
     validate_input()
     init_logs()
-    #gen_students()         # generate student list
-    #move_folders()         # move all submission folders outside batches
-    #rename_folders()       # rename folders to student id numbers
-    #extract_folders()      # extract all zip files recursively
-    #sweep()                # remove all IDE generated files and folders, and non-java files
-    #move_files()           # moves all java files base(studentid) folder, removes empty folders
-    #list_empty_entries()   # list empty entries for sanity checking
+    gen_students()         # generate student list
+    move_folders()         # move all submission folders outside batches
+    rename_folders()       # rename folders to student id numbers
+    extract_folders()      # extract all zip files recursively
+    sweep()                # remove all IDE generated files and folders, and non-java files
+    move_files()           # moves all java files base(studentid) folder, removes empty folders
+    list_empty_entries()   # list empty entries for sanity checking
     merge_files()          # merge all files inside each student folder into one file
     close_logs()
 
