@@ -1,10 +1,4 @@
-#!/usr/bin/env python
-"""
-TODO:   Migrate code to python3
-TODO:   Work on a copy of the original submission folder
-TODO:   Replace subroutines with python libraries
-TODO:   Replace with functions passed as arugments - esp. for recursive methods
-"""
+#!/usr/bin/env python3
 
 import os
 import sys
@@ -21,7 +15,7 @@ def close_logs():
     log.close()
 
 def student_info(student):
-    print student
+    print(student)
     student = student[0:student.find('_')]
     id = re.findall(r"\w{2}\d{8}", student)[0]
     name = student.replace(id, '').strip()
@@ -45,11 +39,11 @@ def gen_students():
     file.write('Name,SID,Email,Role\n')
     file.writelines(sorted(entries))
     file.close()
-    print 'Student List Generated ...'
+    print('Student List Generated ...')
 
 def validate_input():
     if len(sys.argv)<=1:
-        print 'You must specify a folder'
+        print('You must specify a folder')
         exit(1)
     global startdir
     startdir = os.path.abspath(sys.argv[1])
@@ -66,7 +60,7 @@ def rename_folders():
                     subprocess.call(['rm', '-rf', sub])
             else:
                 os.rename(sub, sub_dir.upper())
-    print 'Successfully renamed folders to student ids'
+    print('Successfully renamed folders to student ids')
 
 def rec_move_files(folder, basepath):
     os.chdir(folder)
@@ -98,18 +92,20 @@ def move_files():
             rec_move_files(studentid, basepath)
         else:
             os.remove(studentid)
-    print 'Successfully moved all java files to studentid folder'
+    print('Successfully moved all java files to studentid folder')
 
 def merge_files():
     global startdir
     os.chdir(startdir)
     for studentid in os.listdir('.'):
-        for file in os.listdir(studentid):
-            with open(studentid+'-merged.java','a+') as f:
-                f.write(open(studentid+'/'+file, 'r').read())
-                f.write('\n')
-        rmtree(studentid)
-    print 'Successfully merged all java files into one per submission'
+        if os.path.isdir(studentid):
+            for file in os.listdir(studentid):
+                with open(studentid+'-merged.java','a+') as outfile:
+                    infile = open(studentid+'/'+file, 'r', encoding='cp1252')
+                    outfile.write(infile.read())
+                    outfile.write('\n')
+            rmtree(studentid)
+    print('Successfully merged all java files into one per submission')
 
 def move_folders():
     global startdir
@@ -123,7 +119,7 @@ def move_folders():
                 os.rename(source_path, dest_path+'/'+submission)
             os.chdir('..')
             os.rmdir(batch)
-    print 'Successfully moved all submission folders to base folder'
+    print('Successfully moved all submission folders to base folder')
 
 def rmtree(name):
     global log
@@ -150,7 +146,7 @@ def sweep():
     os.chdir(startdir)
     rec_sweep()
     os.chdir('..')
-    print 'Successfully removed all IDE generated files'
+    print('Successfully removed all IDE generated files')
 
 def extract_remove(command, filename):
     global log
@@ -181,7 +177,7 @@ def extract_folders():
     global startdir
     os.chdir(startdir)
     rec_extract()
-    print 'Successfully extracted all zip, rar, jar files'
+    print('Successfully extracted all zip, rar, jar files')
 
 def list_empty_entries():
     global startdir
@@ -196,23 +192,23 @@ def list_empty_entries():
             files.append(file)
         if len(files)==0:
             empty += 1
-            print studentid, files
+            print(studentid, files)
         total += len(files)
-    print ''
-    print 'Total Students:', len(list)
-    print 'Total Files:', total
-    print 'Empty Entries:', empty
+    print('')
+    print('Total Students:', len(list))
+    print('Total Files:', total)
+    print('Empty Entries:', empty)
 
 def main():
     validate_input()
     init_logs()
-    gen_students()         # generate student list
-    move_folders()         # move all submission folders outside batches
-    rename_folders()       # rename folders to student id numbers
-    extract_folders()      # extract all zip files recursively
-    sweep()                # remove all IDE generated files and folders, and non-java files
-    move_files()           # moves all java files base(studentid) folder, removes empty folders
-    list_empty_entries()   # list empty entries for sanity checking
+    #gen_students()         # generate student list
+    #move_folders()         # move all submission folders outside batches
+    #rename_folders()       # rename folders to student id numbers
+    #extract_folders()      # extract all zip files recursively
+    #sweep()                # remove all IDE generated files and folders, and non-java files
+    #move_files()           # moves all java files base(studentid) folder, removes empty folders
+    #list_empty_entries()   # list empty entries for sanity checking
     merge_files()          # merge all files inside each student folder into one file
     close_logs()
 
