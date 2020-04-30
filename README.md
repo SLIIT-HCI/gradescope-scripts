@@ -1,8 +1,8 @@
 
 # gradescope-scripts
 These scripts are written to prepare student submissions as downloaded from CourseWeb to be uploaded to GradeScope for the purposes of
-* automatic or manual grading
-* plagiarism detection
+* automatic or manual grading [1,3,4]
+* plagiarism detection [1,2]
 
 ## Getting Started
 
@@ -71,8 +71,8 @@ The following items are in the development pipeline
 	* E.g. allow the user to run cleanup steps 1,2,5, skipping 3,4
 
 ## Credits | References
-* _Olga Sadie, Customer Happiness Manager at GradeScope_
-* _[https://www.gradescope.com/help#help-center-item-programming-assignments](https://www.gradescope.com/help#help-center-item-programming-assignments)_
-* _[https://www.gradescope.com/help#help-center-item-programming-assignments-review-similarity](https://www.gradescope.com/help#help-center-item-programming-assignments-review-similarity)_
-* _[https://gradescope-autograders.readthedocs.io/en/latest/specs/](https://gradescope-autograders.readthedocs.io/en/latest/specs/)_
-* _[https://gradescope-autograders.readthedocs.io/en/latest/manual_grading/](https://gradescope-autograders.readthedocs.io/en/latest/manual_grading/)_
+* [0] Olga Sadie, Customer Happiness Manager at GradeScope
+* [1] [https://www.gradescope.com/help#help-center-item-programming-assignments](https://www.gradescope.com/help#help-center-item-programming-assignments)
+* [2] [https://www.gradescope.com/help#help-center-item-programming-assignments-review-similarity](https://www.gradescope.com/help#help-center-item-programming-assignments-review-similarity)
+* [3] [https://gradescope-autograders.readthedocs.io/en/latest/specs/](https://gradescope-autograders.readthedocs.io/en/latest/specs/)
+* [4] [https://gradescope-autograders.readthedocs.io/en/latest/manual_grading/](https://gradescope-autograders.readthedocs.io/en/latest/manual_grading/)
