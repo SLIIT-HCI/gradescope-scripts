@@ -39,6 +39,25 @@ The `<student-id>.java` contains a merged version of all the source files belong
 		$ cd submissions
 		$ python ../upload-all.py 
 
+## What Happens
+This is an abstract explanation of what the program does. In-depth details could be understood by readingv the code
+* clean-all.py
+	1. Traverse the submission folder hierarchy and generate the student list as CSV
+	1. Moves all the student submission folders from inside batch folders to the submission root e.g. from `~/gs/submissions/<batch>/<student-submission>` to `~/gs/submissions/<student-submission>`
+	1. The student submission folder names are a combination of names and student-ids, rename these to just student-ids
+	1. Recursively extract all the zip files found inside the folder hierarchy. This includes zips inside zips as well
+	1. Recursively remove all non-source files - at the moment we assume source is contained inside **.java** or **.txt** files only. Unfortunately if students have put source files in other formats such as WORD or PDF, they'll be removed too. This also renames all .txt extensions to .java extensions.
+	1. Move all source files to the student-submission root e.g. directly under `~/gs/submissions/<student-id>`
+	1. Removes all empty folders
+	1. Lists all student submissions with no files in them - this means all the files inside them were removed due to reasons mentioned above
+	1. if `merge==True` merges all the source files inside each student submission folder into one source file. This helps when comparing submissions during plagiarism checking, and yields better results.
+	
+* upload-all.py
+	1. Logs into GradeScope using given credentials
+	1. Captures the course-id and assignment-id from the user
+	1. Loops through all the student folders
+	1. For each student folder, uploads the student submission to the given course/assignment using HTTP post requests
+	
 ## Notes
 The merge feature could be turned off by:
 * setting `merge = False` in upload-all.py, and
