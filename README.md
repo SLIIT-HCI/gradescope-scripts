@@ -2,7 +2,7 @@
 # gradescope-scripts
 These scripts are written to prepare student submissions as downloaded from CourseWeb to be uploaded to GradeScope for the purposes of
 * automatic or manual grading [1,3,4]
-* plagiarism detection [1,2]
+* plagiarism detection [2]
 
 ## Getting Started
 
